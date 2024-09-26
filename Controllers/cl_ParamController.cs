@@ -53,9 +53,9 @@ namespace MyBudgetManagerAPI.Controllers
     [ApiExplorerSettings(GroupName = "Paramètres")]
     public class cl_ParamController : ControllerBase
     {
-        private readonly cl_MyBudgetMangerApiDbContext m_clContext;
+        private readonly cl_MyBudgetManagerApiDbContext m_clContext;
 
-        public cl_ParamController(cl_MyBudgetMangerApiDbContext pclContext)
+        public cl_ParamController(cl_MyBudgetManagerApiDbContext pclContext)
         {
             m_clContext = pclContext;
         }

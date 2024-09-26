@@ -12,9 +12,9 @@ namespace MyBudgetManagerAPI.Controllers
     [ApiExplorerSettings(GroupName = "Wishlist")]
     public class cl_WishlistController : ControllerBase
     {
-        private readonly cl_MyBudgetMangerApiDbContext _context;
+        private readonly cl_MyBudgetManagerApiDbContext _context;
 
-        public cl_WishlistController(cl_MyBudgetMangerApiDbContext context)
+        public cl_WishlistController(cl_MyBudgetManagerApiDbContext context)
         {
             _context = context;
         }

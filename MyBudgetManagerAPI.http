@@ -1,6 +1,1 @@
-@MyBudgetManagerAPI_HostAddress = http://mybudgetmanagerapi.somee.com/API/
-
-GET {{MyBudgetManagerAPI_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
+@MyBudgetManagerAPI_HostAddress = http://mybudgetmanagerapi.somee.com/

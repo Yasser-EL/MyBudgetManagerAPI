@@ -12,9 +12,9 @@ namespace MyBudgetManagerAPI.Controllers
     [ApiExplorerSettings(GroupName = "Personnes")]
     public class cl_PersonneController : ControllerBase
     {
-        private readonly cl_MyBudgetMangerApiDbContext _context;
+        private readonly cl_MyBudgetManagerApiDbContext _context;
 
-        public cl_PersonneController(cl_MyBudgetMangerApiDbContext context)
+        public cl_PersonneController(cl_MyBudgetManagerApiDbContext context)
         {
             _context = context;
         }

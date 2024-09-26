@@ -13,9 +13,9 @@ namespace MyBudgetManagerAPI.Controllers
 
     public class cl_NatureDepenseController : ControllerBase
     {
-        private readonly cl_MyBudgetMangerApiDbContext _context;
+        private readonly cl_MyBudgetManagerApiDbContext _context;
 
-        public cl_NatureDepenseController(cl_MyBudgetMangerApiDbContext context)
+        public cl_NatureDepenseController(cl_MyBudgetManagerApiDbContext context)
         {
             _context = context;
         }

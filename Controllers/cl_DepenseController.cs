@@ -12,14 +12,15 @@ namespace MyBudgetManagerAPI.Controllers
     [ApiExplorerSettings(GroupName = "Dépenses")]
     public class cl_DepenseController : ControllerBase
     {
-        private readonly cl_MyBudgetMangerApiDbContext _context;
+        private readonly cl_MyBudgetManagerApiDbContext _context;
 
-        public cl_DepenseController(cl_MyBudgetMangerApiDbContext context)
+        public cl_DepenseController(cl_MyBudgetManagerApiDbContext context)
         {
             _context = context;
         }
 
         //GET: api/depenses/12/2024/4
+        [Authorize]
         [HttpGet("{nMois}/{nAnnee}")]
         public async Task<ActionResult<IEnumerable<cl_Depense>>> GetDepenses(int nMois, int nAnnee,
                                                                     [FromQuery(Name = "semaine")] int? nSemaine)
@@ -50,21 +51,21 @@ namespace MyBudgetManagerAPI.Controllers
 
             lnAnnee = DateTime.Now.Year;
 
-            var items = await _context.p_clDepenses
+            decimal? lrTotal = await _context.p_clDepenses
                                         .Where(item => item.p_nIdType == nIdTypeDepense
                                                     && item.p_nMois == lnMois
                                                     && item.p_nAnnee == lnAnnee
                                                     && (!nIdPersonne.HasValue || item.p_nIdPersonne == nIdPersonne)
                                                     && (!nSemaine.HasValue || item.p_nSemaine == nSemaine))
-                                        .ToListAsync();
+                                        .SumAsync(item => item.p_rMontant);
 
-            return Ok(items);
+            return Ok(lrTotal ?? 0);
         }
 
         // PUT: api/depenses/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{nId}")]
-        public async Task<IActionResult> PutDepense(int nId, cl_Depense pclDepense)
+        public async Task<IActionResult> PutDepense(int nId, [FromBody] cl_Depense pclDepense)
         {
             if (nId != pclDepense.p_nIdDepense)
             {
@@ -95,7 +96,7 @@ namespace MyBudgetManagerAPI.Controllers
         // POST: api/depenses
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<cl_Depense>> PostDepense(cl_Depense pclDepense)
+        public async Task<ActionResult<cl_Depense>> PostDepense([FromBody] cl_Depense pclDepense)
         {
             _context.p_clDepenses.Add(pclDepense);
             await _context.SaveChangesAsync();

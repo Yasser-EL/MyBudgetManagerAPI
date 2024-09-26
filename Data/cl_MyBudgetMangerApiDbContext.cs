@@ -1,16 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MyBudgetManagerAPI.Controllers;
 using MyBudgetManagerAPI.Models;
 
 namespace MyBudgetManagerAPI.Data
 {
 
-    public partial class cl_MyBudgetMangerApiDbContext : DbContext
+    public partial class cl_MyBudgetManagerApiDbContext : DbContext
     {
-        public cl_MyBudgetMangerApiDbContext()
+        public cl_MyBudgetManagerApiDbContext()
         {
         }
 
-        public cl_MyBudgetMangerApiDbContext(DbContextOptions<cl_MyBudgetMangerApiDbContext> options)
+        public cl_MyBudgetManagerApiDbContext(DbContextOptions<cl_MyBudgetManagerApiDbContext> options)
             : base(options)
         {
         }
@@ -26,10 +27,6 @@ namespace MyBudgetManagerAPI.Data
         public virtual DbSet<cl_TypeDepense> p_clTypesDepenses { get; set; }
 
         public virtual DbSet<cl_Wishlist> p_clWishlists { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-            => optionsBuilder.UseSqlServer("Data Source=EL-PSY-CONGROO\\SQLEXPRESS;Initial Catalog=BudgetDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
         protected override void OnModelCreating(ModelBuilder pclModelBuilder)
         {
@@ -78,6 +75,13 @@ namespace MyBudgetManagerAPI.Data
                 entity.Property(e => e.p_sLibelle)
                     .HasMaxLength(50)
                     .HasColumnName("libelle");
+
+                // Seeding default data
+                entity.HasData(
+                    new cl_NatureDepense { p_nIdNature = 1, p_rPourcentage = 50, p_sLibelle = "Primaire" },
+                    new cl_NatureDepense { p_nIdNature = 2, p_rPourcentage = 30, p_sLibelle = "Secondaire" },
+                    new cl_NatureDepense { p_nIdNature = 3, p_rPourcentage = 20, p_sLibelle = "Epargnes" }
+                );
             });
 
             pclModelBuilder.Entity<cl_Param>(entity =>
@@ -96,6 +100,19 @@ namespace MyBudgetManagerAPI.Data
                 entity.Property(e => e.p_rValue)
                     .HasColumnType("numeric(7, 2)")
                     .HasColumnName("value");
+
+                // Seeding default data
+                entity.HasData(
+                    new cl_Param { p_nIdParam = 1, p_sSection = eSection.PARAM.ToString(), p_sParameter = eParam.SEMAINE_EN_COURS.ToString(), p_rValue = 1 },
+                    new cl_Param { p_nIdParam = 2, p_sSection = eSection.PARAM.ToString(), p_sParameter = eParam.MOIS_EN_COURS.ToString(), p_rValue = 1 },
+                    new cl_Param { p_nIdParam = 3, p_sSection = eSection.CHARGES_FIXES.ToString(), p_sParameter = eChargesFixes.LOYER.ToString() },
+                    new cl_Param { p_nIdParam = 4, p_sSection = eSection.CHARGES_FIXES.ToString(), p_sParameter = eChargesFixes.INTERNET.ToString() },
+                    new cl_Param { p_nIdParam = 5, p_sSection = eSection.CHARGES_FIXES.ToString(), p_sParameter = eChargesFixes.TELEPHONIE.ToString() },
+                    new cl_Param { p_nIdParam = 6, p_sSection = eSection.CHARGES_VARIABLES.ToString(), p_sParameter = eChargesVariables.EAU.ToString() },
+                    new cl_Param { p_nIdParam = 7, p_sSection = eSection.CHARGES_VARIABLES.ToString(), p_sParameter = eChargesVariables.ELECTRICITE.ToString() },
+                    new cl_Param { p_nIdParam = 8, p_sSection = eSection.CHARGES_VARIABLES.ToString(), p_sParameter = eChargesVariables.TRANSPORT.ToString() },
+                    new cl_Param { p_nIdParam = 9, p_sSection = eSection.CREDITS.ToString(), p_sParameter = eCredits.VOITURE.ToString() }
+                );
             });
 
             pclModelBuilder.Entity<cl_Personne>(entity =>
@@ -116,6 +133,12 @@ namespace MyBudgetManagerAPI.Data
                 entity.Property(e => e.p_rSalaire)
                     .HasColumnType("numeric(7, 2)")
                     .HasColumnName("salaire");
+
+                // Seeding default data
+                entity.HasData(
+                    new cl_Personne { p_nIdPersonne = 1, p_sNom = "PERE" },
+                    new cl_Personne { p_nIdPersonne = 2, p_sNom = "MERE" }
+                );
             });
 
             pclModelBuilder.Entity<cl_TypeDepense>(entity =>
@@ -152,6 +175,17 @@ namespace MyBudgetManagerAPI.Data
                     .HasForeignKey(d => d.p_nIdNature)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_tbl_type_depense_tbl_natures_depenses");
+                // Seeding default data
+                entity.HasData(
+                    new cl_TypeDepense { p_nIdType = 1, p_sLibelle = "Nourriture et sanitaire", p_nIdNature = 1, p_nRepartition = 38, p_bEquallyDivisible = false, p_bHebdo = true },
+                    new cl_TypeDepense { p_nIdType = 2, p_sLibelle = "Santé", p_nIdNature = 1, p_nRepartition = 24, p_bEquallyDivisible = false, p_bHebdo = false },
+                    new cl_TypeDepense { p_nIdType = 3, p_sLibelle = "Equipements", p_nIdNature = 2, p_nRepartition = 24, p_bEquallyDivisible = false, p_bHebdo = false },
+                    new cl_TypeDepense { p_nIdType = 4, p_sLibelle = "Essence", p_nIdNature = 1, p_nRepartition = 38, p_bEquallyDivisible = false, p_bHebdo = true },
+                    new cl_TypeDepense { p_nIdType = 5, p_sLibelle = "Vêtements", p_nIdNature = 2, p_nRepartition = 32, p_bEquallyDivisible = true, p_bHebdo = false },
+                    new cl_TypeDepense { p_nIdType = 6, p_sLibelle = "Voyage", p_nIdNature = 2, p_nRepartition = 26, p_bEquallyDivisible = false, p_bHebdo = false },
+                    new cl_TypeDepense { p_nIdType = 7, p_sLibelle = "Resto", p_nIdNature = 2, p_nRepartition = 9, p_bEquallyDivisible = false, p_bHebdo = false },
+                    new cl_TypeDepense { p_nIdType = 8, p_sLibelle = "Loisirs", p_nIdNature = 2, p_nRepartition = 9, p_bEquallyDivisible = false, p_bHebdo = false }
+                );
             });
 
             pclModelBuilder.Entity<cl_Wishlist>(entity =>

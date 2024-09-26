@@ -61,6 +61,6 @@ public class UserLogin
     [JsonPropertyName("Username")]
     public string p_sUsername { get; set; }
 
-    [JsonPropertyName("Pasword")]
+    [JsonPropertyName("Password")]
     public string p_sPassword { get; set; }
 }

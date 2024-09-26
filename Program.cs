@@ -13,14 +13,20 @@ var jwtSettings = builder.Configuration.GetSection("JwtSettings");
 
 builder.Services.AddControllers();
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+Console.WriteLine($"Using connection string: {connectionString}");
+
+
 // Configure Entity Framework to use a SQL Server Database
-builder.Services.AddDbContext<cl_MyBudgetMangerApiDbContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<cl_MyBudgetManagerApiDbContext>(options =>
+                                                             options.UseSqlServer(connectionString)
+                                                                     .EnableSensitiveDataLogging() // Shows detailed query parameters in logs
+                                                                     .LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information)
+                                                             );
 
 
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 // Add Swagger services with custom configuration
 builder.Services.AddSwaggerGen(c =>
@@ -77,6 +83,10 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+// Configure logging
+builder.Logging.AddConsole(); // Enables logging to the console
+builder.Logging.SetMinimumLevel(LogLevel.Information); // Set the logging level
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -91,21 +101,30 @@ else
     app.UseMiddleware<cl_RequireHttps>();
 }
 
+// Apply migrations automatically
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<cl_MyBudgetManagerApiDbContext>();
+
+    // Check if the database already exists
+    if (!dbContext.Database.CanConnect())
+    {
+        // If the database doesn't exist, create it and apply migrations
+        dbContext.Database.Migrate();
+    }
+    else
+    {
+        // Database exists, check for schema updates
+        dbContext.Database.EnsureCreated();
+    }
+}
+
 //app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

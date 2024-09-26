@@ -12,9 +12,9 @@ namespace MyBudgetManagerAPI.Controllers
     [ApiExplorerSettings(GroupName = "Types des dépenses")]
     public class cl_TypeDepenseController : ControllerBase
     {
-        private readonly cl_MyBudgetMangerApiDbContext _context;
+        private readonly cl_MyBudgetManagerApiDbContext _context;
 
-        public cl_TypeDepenseController(cl_MyBudgetMangerApiDbContext context)
+        public cl_TypeDepenseController(cl_MyBudgetManagerApiDbContext context)
         {
             _context = context;
         }
