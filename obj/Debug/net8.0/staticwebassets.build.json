@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "GZWlpS01z8VzmGymkH/YZaZ4+hywJphM5GwoEJaV4NY=",
+  "Source": "MyBudgetManagerAPI",
+  "BasePath": "_content/MyBudgetManagerAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "MyBudgetManagerAPI\\wwwroot",
+      "Source": "MyBudgetManagerAPI",
+      "ContentRoot": "C:\\Users\\MYC\\source\\repos\\MyBudgetManagerAPI\\wwwroot\\",
+      "BasePath": "_content/MyBudgetManagerAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
