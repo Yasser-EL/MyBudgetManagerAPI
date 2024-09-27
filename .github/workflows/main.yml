@@ -51,6 +51,6 @@ jobs:
           server: ftp://155.254.244.37
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./output/
+          local-dir: ./MyBudgetManagerAPI/output/
           server-dir: www.MyBudgetManagerAPI.somee.com/
       
