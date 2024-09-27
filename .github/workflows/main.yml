@@ -52,5 +52,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./output
-          server-dir: /path/to/your/api
-          git-ftp-args: --insecure
+          server-dir: //www.MyBudgetManagerAPI.somee.com
+      
