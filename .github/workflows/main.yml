@@ -28,7 +28,7 @@ jobs:
         run: dotnet test --no-restore --verbosity normal
 
       - name: Publish the project
-        run: dotnet publish -c Release -o ./output
+        run: dotnet publish ./MyBudgetManagerAPI.csproj -c Release -o ./output
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
