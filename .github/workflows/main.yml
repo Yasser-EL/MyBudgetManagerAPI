@@ -29,12 +29,15 @@ jobs:
 
       - name: Publish the project
         run: dotnet publish ./MyBudgetManagerAPI.csproj -c Release -o ./output
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-output
-          path: ./output
+        
+      - name: List Output Directory for Debugging
+        run: ls -al ./output # Verifies if output is generated properly
+      
+      #- name: Upload artifacts
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: build-output
+      #    path: ./output
 
   deploy:
     runs-on: ubuntu-latest
@@ -51,6 +54,6 @@ jobs:
           server: ftp://155.254.244.37
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./MyBudgetManagerAPI/output/
+          local-dir: ./output/
           server-dir: www.MyBudgetManagerAPI.somee.com/
       
