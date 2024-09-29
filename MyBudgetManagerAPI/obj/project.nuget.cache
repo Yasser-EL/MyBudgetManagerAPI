@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vPg38+j0jU4=",
+  "dgSpecHash": "cjIyWSyWbB8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\MYC\\source\\repos\\MyBudgetManagerAPI\\MyBudgetManagerAPI.csproj",
+  "projectFilePath": "c:\\Users\\MYC\\source\\repos\\MyBudgetManagerAPI\\MyBudgetManagerAPI\\MyBudgetManagerAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MYC\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\MYC\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

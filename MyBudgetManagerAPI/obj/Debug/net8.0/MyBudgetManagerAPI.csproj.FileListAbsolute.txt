@@ -254,3 +254,14 @@ C:\Users\MYC\source\repos\MyBudgetManagerAPI\obj\Debug\net8.0\refint\MyBudgetMan
 C:\Users\MYC\source\repos\MyBudgetManagerAPI\obj\Debug\net8.0\MyBudgetManagerAPI.pdb
 C:\Users\MYC\source\repos\MyBudgetManagerAPI\obj\Debug\net8.0\MyBudgetManagerAPI.genruntimeconfig.cache
 C:\Users\MYC\source\repos\MyBudgetManagerAPI\obj\Debug\net8.0\ref\MyBudgetManagerAPI.dll
+c:\Users\MYC\source\repos\MyBudgetManagerAPI\MyBudgetManagerAPI\obj\Debug\net8.0\MyBudgetManagerAPI.csproj.AssemblyReference.cache
+c:\Users\MYC\source\repos\MyBudgetManagerAPI\MyBudgetManagerAPI\obj\Debug\net8.0\MyBudgetManagerAPI.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\MYC\source\repos\MyBudgetManagerAPI\MyBudgetManagerAPI\obj\Debug\net8.0\MyBudgetManagerAPI.AssemblyInfoInputs.cache
+c:\Users\MYC\source\repos\MyBudgetManagerAPI\MyBudgetManagerAPI\obj\Debug\net8.0\MyBudgetManagerAPI.AssemblyInfo.cs
+c:\Users\MYC\source\repos\MyBudgetManagerAPI\MyBudgetManagerAPI\obj\Debug\net8.0\MyBudgetManagerAPI.csproj.CoreCompileInputs.cache
+c:\Users\MYC\source\repos\MyBudgetManagerAPI\MyBudgetManagerAPI\obj\Debug\net8.0\MyBudgetManagerAPI.MvcApplicationPartsAssemblyInfo.cs
+c:\Users\MYC\source\repos\MyBudgetManagerAPI\MyBudgetManagerAPI\obj\Debug\net8.0\MyBudgetManagerAPI.MvcApplicationPartsAssemblyInfo.cache
+c:\Users\MYC\source\repos\MyBudgetManagerAPI\MyBudgetManagerAPI\obj\Debug\net8.0\MyBudgetManagerAPI.sourcelink.json
+c:\Users\MYC\source\repos\MyBudgetManagerAPI\MyBudgetManagerAPI\obj\Debug\net8.0\MyBudgetManagerAPI.dll
+c:\Users\MYC\source\repos\MyBudgetManagerAPI\MyBudgetManagerAPI\obj\Debug\net8.0\refint\MyBudgetManagerAPI.dll
+c:\Users\MYC\source\repos\MyBudgetManagerAPI\MyBudgetManagerAPI\obj\Debug\net8.0\MyBudgetManagerAPI.pdb
