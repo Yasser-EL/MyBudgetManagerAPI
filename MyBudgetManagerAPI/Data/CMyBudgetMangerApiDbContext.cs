@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyBudgetManagerAPI.Controllers;
 using MyBudgetManagerAPI.Models;
+using static MyBudgetManagerAPI.Services.CParamService;
 
 namespace MyBudgetManagerAPI.Data
 {

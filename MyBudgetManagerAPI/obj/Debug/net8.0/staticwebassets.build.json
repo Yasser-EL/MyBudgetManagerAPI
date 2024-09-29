@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "GZWlpS01z8VzmGymkH/YZaZ4+hywJphM5GwoEJaV4NY=",
+  "Hash": "gcu2Do/WRgU2zEmsFfxwn7HQySatHE+thS6AV53hlos=",
   "Source": "MyBudgetManagerAPI",
   "BasePath": "_content/MyBudgetManagerAPI",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "MyBudgetManagerAPI\\wwwroot",
       "Source": "MyBudgetManagerAPI",
-      "ContentRoot": "C:\\Users\\MYC\\source\\repos\\MyBudgetManagerAPI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\MYC\\source\\repos\\MyBudgetManagerAPI\\MyBudgetManagerAPI\\wwwroot\\",
       "BasePath": "_content/MyBudgetManagerAPI",
       "Pattern": "**"
     }

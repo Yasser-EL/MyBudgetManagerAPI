@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\MYC\\source\\repos\\MyBudgetManagerAPI\\MyBudgetManagerAPI\\MyBudgetManagerAPI.csproj": {}
+    "C:\\Users\\MYC\\source\\repos\\MyBudgetManagerAPI\\MyBudgetManagerAPI\\MyBudgetManagerAPI.csproj": {}
   },
   "projects": {
-    "c:\\Users\\MYC\\source\\repos\\MyBudgetManagerAPI\\MyBudgetManagerAPI\\MyBudgetManagerAPI.csproj": {
+    "C:\\Users\\MYC\\source\\repos\\MyBudgetManagerAPI\\MyBudgetManagerAPI\\MyBudgetManagerAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\MYC\\source\\repos\\MyBudgetManagerAPI\\MyBudgetManagerAPI\\MyBudgetManagerAPI.csproj",
+        "projectUniqueName": "C:\\Users\\MYC\\source\\repos\\MyBudgetManagerAPI\\MyBudgetManagerAPI\\MyBudgetManagerAPI.csproj",
         "projectName": "MyBudgetManagerAPI",
-        "projectPath": "c:\\Users\\MYC\\source\\repos\\MyBudgetManagerAPI\\MyBudgetManagerAPI\\MyBudgetManagerAPI.csproj",
+        "projectPath": "C:\\Users\\MYC\\source\\repos\\MyBudgetManagerAPI\\MyBudgetManagerAPI\\MyBudgetManagerAPI.csproj",
         "packagesPath": "C:\\Users\\MYC\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\MYC\\source\\repos\\MyBudgetManagerAPI\\MyBudgetManagerAPI\\obj\\",
+        "outputPath": "C:\\Users\\MYC\\source\\repos\\MyBudgetManagerAPI\\MyBudgetManagerAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"

@@ -35,4 +35,9 @@
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyBudgetManagerAPI.test\MyBudgetManagerAPI.Tests.csproj" />
+  </ItemGroup>
+
 </Project>
