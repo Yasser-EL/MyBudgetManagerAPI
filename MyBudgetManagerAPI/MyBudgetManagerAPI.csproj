@@ -37,7 +37,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\MyBudgetManagerAPI.test\MyBudgetManagerAPI.Tests.csproj" />
+    <ProjectReference Include="..\MyBudgetManagerAPI.Tests\MyBudgetManagerAPI.Tests.csproj" />
   </ItemGroup>
 
 </Project>
