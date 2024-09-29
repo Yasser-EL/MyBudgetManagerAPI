@@ -19,16 +19,16 @@ jobs:
           dotnet-version: '8.0' 
 
       - name: Install dependencies
-        run: dotnet restore
+        run: dotnet restore ./MyBudgetManagerAPI/MyBudgetManagerAPI.sln # Restore dependencies for the solution
 
       - name: Build the solution
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build ./MyBudgetManagerAPI/MyBudgetManagerAPI.sln --configuration Release --no-restore # Build the solution
 
       - name: Run unit tests
-        run: dotnet test --no-restore --verbosity normal
+        run: dotnet test ./MyBudgetManagerAPI.test/MyBudgetManagerAPI.Tests.csproj --no-restore --verbosity normal # Run tests from the test project
 
       - name: Publish the project
-        run: dotnet publish ./MyBudgetManagerAPI.csproj -c Release -o ./output
+        run: dotnet publish ./MyBudgetManagerAPI/MyBudgetManagerAPI.csproj -c Release -o ./output
         
       - name: List Output Directory for Debugging
         run: ls -al ./output # Verifies if output is generated properly
@@ -57,4 +57,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./output/
           server-dir: www.MyBudgetManagerAPI.somee.com/
-      
+	  
