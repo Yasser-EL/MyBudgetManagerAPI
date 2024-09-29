@@ -10,19 +10,19 @@ using MyBudgetManagerAPI.Data;
 
 namespace MyBudgetManagerAPI.Migrations
 {
-    [DbContext(typeof(cl_MyBudgetManagerApiDbContext))]
-    partial class cl_MyBudgetMangerApiDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(CMyBudgetManagerApiDbContext))]
+    partial class CMyBudgetMangerApiDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder a_oModelBuilder)
         {
-#pragma warning disable 612, 618
-            modelBuilder
+            //#pragma warning disable 612, 618
+            a_oModelBuilder
                 .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(a_oModelBuilder);
 
-            modelBuilder.Entity("MyBudgetManagerAPI.Models.cl_Depense", b =>
+            a_oModelBuilder.Entity("MyBudgetManagerAPI.Models.CDepense", b =>
                 {
                     b.Property<int>("p_nIdDepense")
                         .ValueGeneratedOnAdd()
@@ -83,7 +83,7 @@ namespace MyBudgetManagerAPI.Migrations
                     b.ToTable("tbl_depenses", (string)null);
                 });
 
-            modelBuilder.Entity("MyBudgetManagerAPI.Models.cl_NatureDepense", b =>
+            a_oModelBuilder.Entity("MyBudgetManagerAPI.Models.CNatureDepense", b =>
                 {
                     b.Property<byte>("p_nIdNature")
                         .ValueGeneratedOnAdd()
@@ -130,7 +130,7 @@ namespace MyBudgetManagerAPI.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyBudgetManagerAPI.Models.cl_Param", b =>
+            a_oModelBuilder.Entity("MyBudgetManagerAPI.Models.CParam", b =>
                 {
                     b.Property<int>("p_nIdParam")
                         .ValueGeneratedOnAdd()
@@ -221,7 +221,7 @@ namespace MyBudgetManagerAPI.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyBudgetManagerAPI.Models.cl_Personne", b =>
+            a_oModelBuilder.Entity("MyBudgetManagerAPI.Models.CPersonne", b =>
                 {
                     b.Property<byte>("p_nIdPersonne")
                         .ValueGeneratedOnAdd()
@@ -265,7 +265,7 @@ namespace MyBudgetManagerAPI.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyBudgetManagerAPI.Models.cl_TypeDepense", b =>
+            a_oModelBuilder.Entity("MyBudgetManagerAPI.Models.CTypeDepense", b =>
                 {
                     b.Property<int>("p_nIdType")
                         .ValueGeneratedOnAdd()
@@ -449,7 +449,7 @@ namespace MyBudgetManagerAPI.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyBudgetManagerAPI.Models.cl_Wishlist", b =>
+            a_oModelBuilder.Entity("MyBudgetManagerAPI.Models.CWishlist", b =>
                 {
                     b.Property<int>("p_nIdWishlist")
                         .ValueGeneratedOnAdd()
@@ -483,16 +483,16 @@ namespace MyBudgetManagerAPI.Migrations
                     b.ToTable("tbl_wishlist", (string)null);
                 });
 
-            modelBuilder.Entity("MyBudgetManagerAPI.Models.cl_Depense", b =>
+            a_oModelBuilder.Entity("MyBudgetManagerAPI.Models.CDepense", b =>
                 {
-                    b.HasOne("MyBudgetManagerAPI.Models.cl_Personne", "p_clIdPersonneNavigation")
-                        .WithMany("p_aclDepenses")
+                    b.HasOne("MyBudgetManagerAPI.Models.CPersonne", "p_clIdPersonneNavigation")
+                        .WithMany("p_aoDepenses")
                         .HasForeignKey("p_nIdPersonne")
                         .IsRequired()
                         .HasConstraintName("FK_tbl_depenses_tbl_personne");
 
-                    b.HasOne("MyBudgetManagerAPI.Models.cl_TypeDepense", "p_clIdTypeNavigation")
-                        .WithMany("p_aclDepenses")
+                    b.HasOne("MyBudgetManagerAPI.Models.CTypeDepense", "p_clIdTypeNavigation")
+                        .WithMany("p_aoDepenses")
                         .HasForeignKey("p_nIdType")
                         .HasConstraintName("FK_tbl_depenses_tbl_type_depense");
 
@@ -501,10 +501,10 @@ namespace MyBudgetManagerAPI.Migrations
                     b.Navigation("p_clIdTypeNavigation");
                 });
 
-            modelBuilder.Entity("MyBudgetManagerAPI.Models.cl_TypeDepense", b =>
+            a_oModelBuilder.Entity("MyBudgetManagerAPI.Models.CTypeDepense", b =>
                 {
-                    b.HasOne("MyBudgetManagerAPI.Models.cl_NatureDepense", "p_clIdNatureNavigation")
-                        .WithMany("p_aclTypesDepenses")
+                    b.HasOne("MyBudgetManagerAPI.Models.CNatureDepense", "p_clIdNatureNavigation")
+                        .WithMany("p_aoTypesDepenses")
                         .HasForeignKey("p_nIdNature")
                         .IsRequired()
                         .HasConstraintName("FK_tbl_type_depense_tbl_natures_depenses");
@@ -512,10 +512,10 @@ namespace MyBudgetManagerAPI.Migrations
                     b.Navigation("p_clIdNatureNavigation");
                 });
 
-            modelBuilder.Entity("MyBudgetManagerAPI.Models.cl_Wishlist", b =>
+            a_oModelBuilder.Entity("MyBudgetManagerAPI.Models.CWishlist", b =>
                 {
-                    b.HasOne("MyBudgetManagerAPI.Models.cl_TypeDepense", "p_clIdTypeNavigation")
-                        .WithMany("p_aclWishlists")
+                    b.HasOne("MyBudgetManagerAPI.Models.CTypeDepense", "p_clIdTypeNavigation")
+                        .WithMany("p_aoWishlists")
                         .HasForeignKey("p_nIdType")
                         .IsRequired()
                         .HasConstraintName("FK_tbl_wishlist_tbl_type_depense");
@@ -523,21 +523,21 @@ namespace MyBudgetManagerAPI.Migrations
                     b.Navigation("p_clIdTypeNavigation");
                 });
 
-            modelBuilder.Entity("MyBudgetManagerAPI.Models.cl_NatureDepense", b =>
+            a_oModelBuilder.Entity("MyBudgetManagerAPI.Models.CNatureDepense", b =>
                 {
-                    b.Navigation("p_aclTypesDepenses");
+                    b.Navigation("p_aoTypesDepenses");
                 });
 
-            modelBuilder.Entity("MyBudgetManagerAPI.Models.cl_Personne", b =>
+            a_oModelBuilder.Entity("MyBudgetManagerAPI.Models.CPersonne", b =>
                 {
-                    b.Navigation("p_aclDepenses");
+                    b.Navigation("p_aoDepenses");
                 });
 
-            modelBuilder.Entity("MyBudgetManagerAPI.Models.cl_TypeDepense", b =>
+            a_oModelBuilder.Entity("MyBudgetManagerAPI.Models.CTypeDepense", b =>
                 {
-                    b.Navigation("p_aclDepenses");
+                    b.Navigation("p_aoDepenses");
 
-                    b.Navigation("p_aclWishlists");
+                    b.Navigation("p_aoWishlists");
                 });
 #pragma warning restore 612, 618
         }

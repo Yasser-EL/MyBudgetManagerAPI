@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 namespace MyBudgetManagerAPI;
 
-public class cl_RequireHttps
+public class CRequireHttps
 {
     private readonly RequestDelegate _next;
 
-    public cl_RequireHttps(RequestDelegate next)
+    public CRequireHttps(RequestDelegate next)
     {
         _next = next;
     }

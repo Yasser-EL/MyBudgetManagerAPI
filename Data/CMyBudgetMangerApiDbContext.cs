@@ -5,32 +5,32 @@ using MyBudgetManagerAPI.Models;
 namespace MyBudgetManagerAPI.Data
 {
 
-    public partial class cl_MyBudgetManagerApiDbContext : DbContext
+    public partial class CMyBudgetManagerApiDbContext : DbContext
     {
-        public cl_MyBudgetManagerApiDbContext()
+        public CMyBudgetManagerApiDbContext()
         {
         }
 
-        public cl_MyBudgetManagerApiDbContext(DbContextOptions<cl_MyBudgetManagerApiDbContext> options)
+        public CMyBudgetManagerApiDbContext(DbContextOptions<CMyBudgetManagerApiDbContext> options)
             : base(options)
         {
         }
 
-        public virtual DbSet<cl_Depense> p_clDepenses { get; set; }
+        public virtual DbSet<CDepense> p_oDepenses { get; set; }
 
-        public virtual DbSet<cl_NatureDepense> p_clNaturesDepenses { get; set; }
+        public virtual DbSet<CNatureDepense> p_oNaturesDepenses { get; set; }
 
-        public virtual DbSet<cl_Param> p_clParams { get; set; }
+        public virtual DbSet<CParam> p_oParams { get; set; }
 
-        public virtual DbSet<cl_Personne> p_clPersonnes { get; set; }
+        public virtual DbSet<CPersonne> p_oPersonnes { get; set; }
 
-        public virtual DbSet<cl_TypeDepense> p_clTypesDepenses { get; set; }
+        public virtual DbSet<CTypeDepense> p_oTypesDepenses { get; set; }
 
-        public virtual DbSet<cl_Wishlist> p_clWishlists { get; set; }
+        public virtual DbSet<CWishlist> p_oWishlists { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder pclModelBuilder)
+        protected override void OnModelCreating(ModelBuilder a_oModelBuilder)
         {
-            pclModelBuilder.Entity<cl_Depense>(entity =>
+            a_oModelBuilder.Entity<CDepense>(entity =>
             {
                 entity.HasKey(e => e.p_nIdDepense).HasName("PK_tbl_Depense");
 
@@ -50,18 +50,18 @@ namespace MyBudgetManagerAPI.Data
                     .HasColumnName("montant");
                 entity.Property(e => e.p_nSemaine).HasColumnName("semaine");
 
-                entity.HasOne(d => d.p_clIdPersonneNavigation).WithMany(p => p.p_aclDepenses)
+                entity.HasOne(d => d.p_oIdPersonneNavigation).WithMany(p => p.p_aoDepenses)
                     .HasForeignKey(d => d.p_nIdPersonne)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_tbl_depenses_tbl_personne");
 
-                entity.HasOne(d => d.p_clIdTypeNavigation).WithMany(p => p.p_aclDepenses)
+                entity.HasOne(d => d.p_oIdTypeNavigation).WithMany(p => p.p_aoDepenses)
                     .HasForeignKey(d => d.p_nIdType)
                     .HasConstraintName("FK_tbl_depenses_tbl_type_depense");
 
             });
 
-            pclModelBuilder.Entity<cl_NatureDepense>(entity =>
+            a_oModelBuilder.Entity<CNatureDepense>(entity =>
             {
                 entity.HasKey(e => e.p_nIdNature).HasName("PK_tbl_NatureDepense");
 
@@ -78,13 +78,13 @@ namespace MyBudgetManagerAPI.Data
 
                 // Seeding default data
                 entity.HasData(
-                    new cl_NatureDepense { p_nIdNature = 1, p_rPourcentage = 50, p_sLibelle = "Primaire" },
-                    new cl_NatureDepense { p_nIdNature = 2, p_rPourcentage = 30, p_sLibelle = "Secondaire" },
-                    new cl_NatureDepense { p_nIdNature = 3, p_rPourcentage = 20, p_sLibelle = "Epargnes" }
+                    new CNatureDepense { p_nIdNature = 1, p_rPourcentage = 50, p_sLibelle = "Primaire" },
+                    new CNatureDepense { p_nIdNature = 2, p_rPourcentage = 30, p_sLibelle = "Secondaire" },
+                    new CNatureDepense { p_nIdNature = 3, p_rPourcentage = 20, p_sLibelle = "Epargnes" }
                 );
             });
 
-            pclModelBuilder.Entity<cl_Param>(entity =>
+            a_oModelBuilder.Entity<CParam>(entity =>
             {
                 entity.HasKey(e => e.p_nIdParam).HasName("PK_tbl_Param");
 
@@ -103,19 +103,19 @@ namespace MyBudgetManagerAPI.Data
 
                 // Seeding default data
                 entity.HasData(
-                    new cl_Param { p_nIdParam = 1, p_sSection = eSection.PARAM.ToString(), p_sParameter = eParam.SEMAINE_EN_COURS.ToString(), p_rValue = 1 },
-                    new cl_Param { p_nIdParam = 2, p_sSection = eSection.PARAM.ToString(), p_sParameter = eParam.MOIS_EN_COURS.ToString(), p_rValue = 1 },
-                    new cl_Param { p_nIdParam = 3, p_sSection = eSection.CHARGES_FIXES.ToString(), p_sParameter = eChargesFixes.LOYER.ToString() },
-                    new cl_Param { p_nIdParam = 4, p_sSection = eSection.CHARGES_FIXES.ToString(), p_sParameter = eChargesFixes.INTERNET.ToString() },
-                    new cl_Param { p_nIdParam = 5, p_sSection = eSection.CHARGES_FIXES.ToString(), p_sParameter = eChargesFixes.TELEPHONIE.ToString() },
-                    new cl_Param { p_nIdParam = 6, p_sSection = eSection.CHARGES_VARIABLES.ToString(), p_sParameter = eChargesVariables.EAU.ToString() },
-                    new cl_Param { p_nIdParam = 7, p_sSection = eSection.CHARGES_VARIABLES.ToString(), p_sParameter = eChargesVariables.ELECTRICITE.ToString() },
-                    new cl_Param { p_nIdParam = 8, p_sSection = eSection.CHARGES_VARIABLES.ToString(), p_sParameter = eChargesVariables.TRANSPORT.ToString() },
-                    new cl_Param { p_nIdParam = 9, p_sSection = eSection.CREDITS.ToString(), p_sParameter = eCredits.VOITURE.ToString() }
+                    new CParam { p_nIdParam = 1, p_sSection = eSection.PARAM.ToString(), p_sParameter = eParam.SEMAINE_EN_COURS.ToString(), p_rValue = 1 },
+                    new CParam { p_nIdParam = 2, p_sSection = eSection.PARAM.ToString(), p_sParameter = eParam.MOIS_EN_COURS.ToString(), p_rValue = 1 },
+                    new CParam { p_nIdParam = 3, p_sSection = eSection.CHARGES_FIXES.ToString(), p_sParameter = eChargesFixes.LOYER.ToString() },
+                    new CParam { p_nIdParam = 4, p_sSection = eSection.CHARGES_FIXES.ToString(), p_sParameter = eChargesFixes.INTERNET.ToString() },
+                    new CParam { p_nIdParam = 5, p_sSection = eSection.CHARGES_FIXES.ToString(), p_sParameter = eChargesFixes.TELEPHONIE.ToString() },
+                    new CParam { p_nIdParam = 6, p_sSection = eSection.CHARGES_VARIABLES.ToString(), p_sParameter = eChargesVariables.EAU.ToString() },
+                    new CParam { p_nIdParam = 7, p_sSection = eSection.CHARGES_VARIABLES.ToString(), p_sParameter = eChargesVariables.ELECTRICITE.ToString() },
+                    new CParam { p_nIdParam = 8, p_sSection = eSection.CHARGES_VARIABLES.ToString(), p_sParameter = eChargesVariables.TRANSPORT.ToString() },
+                    new CParam { p_nIdParam = 9, p_sSection = eSection.CREDITS.ToString(), p_sParameter = eCredits.VOITURE.ToString() }
                 );
             });
 
-            pclModelBuilder.Entity<cl_Personne>(entity =>
+            a_oModelBuilder.Entity<CPersonne>(entity =>
             {
                 entity.HasKey(e => e.p_nIdPersonne).HasName("PK_tbl_Personne");
 
@@ -136,12 +136,12 @@ namespace MyBudgetManagerAPI.Data
 
                 // Seeding default data
                 entity.HasData(
-                    new cl_Personne { p_nIdPersonne = 1, p_sNom = "PERE" },
-                    new cl_Personne { p_nIdPersonne = 2, p_sNom = "MERE" }
+                    new CPersonne { p_nIdPersonne = 1, p_sNom = "PERE" },
+                    new CPersonne { p_nIdPersonne = 2, p_sNom = "MERE" }
                 );
             });
 
-            pclModelBuilder.Entity<cl_TypeDepense>(entity =>
+            a_oModelBuilder.Entity<CTypeDepense>(entity =>
             {
                 entity.HasKey(e => e.p_nIdType).HasName("PK_tbl_TypeDepense");
 
@@ -171,24 +171,24 @@ namespace MyBudgetManagerAPI.Data
                     .HasColumnType("numeric(7, 2)")
                     .HasColumnName("total");
 
-                entity.HasOne(d => d.p_clIdNatureNavigation).WithMany(p => p.p_aclTypesDepenses)
+                entity.HasOne(d => d.p_oIdNatureNavigation).WithMany(p => p.p_aoTypesDepenses)
                     .HasForeignKey(d => d.p_nIdNature)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_tbl_type_depense_tbl_natures_depenses");
                 // Seeding default data
                 entity.HasData(
-                    new cl_TypeDepense { p_nIdType = 1, p_sLibelle = "Nourriture et sanitaire", p_nIdNature = 1, p_nRepartition = 38, p_bEquallyDivisible = false, p_bHebdo = true },
-                    new cl_TypeDepense { p_nIdType = 2, p_sLibelle = "Santé", p_nIdNature = 1, p_nRepartition = 24, p_bEquallyDivisible = false, p_bHebdo = false },
-                    new cl_TypeDepense { p_nIdType = 3, p_sLibelle = "Equipements", p_nIdNature = 2, p_nRepartition = 24, p_bEquallyDivisible = false, p_bHebdo = false },
-                    new cl_TypeDepense { p_nIdType = 4, p_sLibelle = "Essence", p_nIdNature = 1, p_nRepartition = 38, p_bEquallyDivisible = false, p_bHebdo = true },
-                    new cl_TypeDepense { p_nIdType = 5, p_sLibelle = "Vêtements", p_nIdNature = 2, p_nRepartition = 32, p_bEquallyDivisible = true, p_bHebdo = false },
-                    new cl_TypeDepense { p_nIdType = 6, p_sLibelle = "Voyage", p_nIdNature = 2, p_nRepartition = 26, p_bEquallyDivisible = false, p_bHebdo = false },
-                    new cl_TypeDepense { p_nIdType = 7, p_sLibelle = "Resto", p_nIdNature = 2, p_nRepartition = 9, p_bEquallyDivisible = false, p_bHebdo = false },
-                    new cl_TypeDepense { p_nIdType = 8, p_sLibelle = "Loisirs", p_nIdNature = 2, p_nRepartition = 9, p_bEquallyDivisible = false, p_bHebdo = false }
+                    new CTypeDepense { p_nIdType = 1, p_sLibelle = "Nourriture et sanitaire", p_nIdNature = 1, p_nRepartition = 38, p_bEquallyDivisible = false, p_bHebdo = true },
+                    new CTypeDepense { p_nIdType = 2, p_sLibelle = "Santé", p_nIdNature = 1, p_nRepartition = 24, p_bEquallyDivisible = false, p_bHebdo = false },
+                    new CTypeDepense { p_nIdType = 3, p_sLibelle = "Equipements", p_nIdNature = 2, p_nRepartition = 24, p_bEquallyDivisible = false, p_bHebdo = false },
+                    new CTypeDepense { p_nIdType = 4, p_sLibelle = "Essence", p_nIdNature = 1, p_nRepartition = 38, p_bEquallyDivisible = false, p_bHebdo = true },
+                    new CTypeDepense { p_nIdType = 5, p_sLibelle = "Vêtements", p_nIdNature = 2, p_nRepartition = 32, p_bEquallyDivisible = true, p_bHebdo = false },
+                    new CTypeDepense { p_nIdType = 6, p_sLibelle = "Voyage", p_nIdNature = 2, p_nRepartition = 26, p_bEquallyDivisible = false, p_bHebdo = false },
+                    new CTypeDepense { p_nIdType = 7, p_sLibelle = "Resto", p_nIdNature = 2, p_nRepartition = 9, p_bEquallyDivisible = false, p_bHebdo = false },
+                    new CTypeDepense { p_nIdType = 8, p_sLibelle = "Loisirs", p_nIdNature = 2, p_nRepartition = 9, p_bEquallyDivisible = false, p_bHebdo = false }
                 );
             });
 
-            pclModelBuilder.Entity<cl_Wishlist>(entity =>
+            a_oModelBuilder.Entity<CWishlist>(entity =>
             {
                 entity.HasKey(e => e.p_nIdWishlist).HasName("PK_tbl_wishlist_1");
 
@@ -201,15 +201,15 @@ namespace MyBudgetManagerAPI.Data
                     .HasColumnType("decimal(18, 2)")
                     .HasColumnName("prix");
 
-                entity.HasOne(d => d.p_clIdTypeNavigation).WithMany(p => p.p_aclWishlists)
+                entity.HasOne(d => d.p_oIdTypeNavigation).WithMany(p => p.p_aoWishlists)
                     .HasForeignKey(d => d.p_nIdType)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_tbl_wishlist_tbl_type_depense");
             });
 
-            OnModelCreatingPartial(pclModelBuilder);
+            OnModelCreatingPartial(a_oModelBuilder);
         }
 
-        partial void OnModelCreatingPartial(ModelBuilder pclModelBuilder);
+        partial void OnModelCreatingPartial(ModelBuilder a_oModelBuilder);
     }
 }

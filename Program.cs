@@ -18,10 +18,10 @@ Console.WriteLine($"Using connection string: {connectionString}");
 
 
 // Configure Entity Framework to use a SQL Server Database
-builder.Services.AddDbContext<cl_MyBudgetManagerApiDbContext>(options =>
+builder.Services.AddDbContext<CMyBudgetManagerApiDbContext>(options =>
                                                              options.UseSqlServer(connectionString)
                                                                      .EnableSensitiveDataLogging() // Shows detailed query parameters in logs
-                                                                     .LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information)
+                                                                     .LogTo(Console.WriteLine, LogLevel.Information)
                                                              );
 
 
@@ -97,14 +97,14 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
-    // Use the cl_RequireHttps before other middlewares
-    app.UseMiddleware<cl_RequireHttps>();
+    // Use the CRequireHttps before other middlewares
+    app.UseMiddleware<CRequireHttps>();
 }
 
 // Apply migrations automatically
 using (var scope = app.Services.CreateScope())
 {
-    var dbContext = scope.ServiceProvider.GetRequiredService<cl_MyBudgetManagerApiDbContext>();
+    var dbContext = scope.ServiceProvider.GetRequiredService<CMyBudgetManagerApiDbContext>();
 
     // Check if the database already exists
     if (!dbContext.Database.CanConnect())

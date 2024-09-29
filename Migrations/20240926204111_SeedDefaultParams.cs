@@ -10,9 +10,9 @@ namespace MyBudgetManagerAPI.Migrations
     public partial class SeedDefaultParams : Migration
     {
         /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
+        protected override void Up(MigrationBuilder a_oMigrationBuilder)
         {
-            migrationBuilder.InsertData(
+            a_oMigrationBuilder.InsertData(
                 table: "tbl_natures_depenses",
                 columns: new[] { "id_nature", "pourcentage", "libelle" },
                 values: new object[,]
@@ -22,7 +22,7 @@ namespace MyBudgetManagerAPI.Migrations
                     { (byte)3, (byte)20, "Epargnes" }
                 });
 
-            migrationBuilder.InsertData(
+            a_oMigrationBuilder.InsertData(
                 table: "tbl_param",
                 columns: new[] { "id_param", "value", "parameter", "section" },
                 values: new object[,]
@@ -38,7 +38,7 @@ namespace MyBudgetManagerAPI.Migrations
                     { 9, null, "VOITURE", "CREDITS" }
                 });
 
-            migrationBuilder.InsertData(
+            a_oMigrationBuilder.InsertData(
                 table: "tbl_personne",
                 columns: new[] { "id_personne", "dettes", "salaire", "nom" },
                 values: new object[,]
@@ -47,7 +47,7 @@ namespace MyBudgetManagerAPI.Migrations
                     { (byte)2, null, null, "MERE" }
                 });
 
-            migrationBuilder.InsertData(
+            a_oMigrationBuilder.InsertData(
                 table: "tbl_types_depenses",
                 columns: new[] { "id_type", "equally_divisible", "hebdo", "id_nature", "repartition", "semaine_1", "semaine_2", "semaine_3", "semaine_4", "total", "libelle" },
                 values: new object[,]
