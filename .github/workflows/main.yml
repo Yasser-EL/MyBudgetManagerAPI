@@ -25,7 +25,7 @@ jobs:
         run: dotnet build ./MyBudgetManagerAPI/MyBudgetManagerAPI.sln --configuration Release --no-restore # Build the solution
 
       - name: Run unit tests
-        run: dotnet test ./MyBudgetManagerAPI.test/MyBudgetManagerAPI.Tests.csproj --no-restore --verbosity normal # Run tests from the test project
+        run: dotnet test ./MyBudgetManagerAPI.Tests/MyBudgetManagerAPI.Tests.csproj --no-restore --verbosity normal # Run tests from the test project
 
       - name: Publish the project
         run: dotnet publish ./MyBudgetManagerAPI/MyBudgetManagerAPI.csproj -c Release -o ./output
