@@ -48,7 +48,7 @@ public partial class CDepense
     [JsonPropertyName("IdPersonne")]
     [Required(ErrorMessage = "Le champ IdPersonne est obligatoire.")]
     [Range(1, int.MaxValue, ErrorMessage = "Le champ IdPersonne doit être supérieur à 0.")]
-    public int p_nIdPersonne { get; set; }
+    public byte p_nIdPersonne { get; set; }
 
     [JsonIgnore]
     public virtual CPersonne p_oIdPersonneNavigation { get; set; } = null!;
