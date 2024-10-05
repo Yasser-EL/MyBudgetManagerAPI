@@ -57,3 +57,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./output/
           server-dir: www.MyBudgetManagerAPI.somee.com/
+          exclude: |
+            appsettings.json
