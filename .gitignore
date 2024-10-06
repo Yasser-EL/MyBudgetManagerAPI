@@ -1,1 +1,6 @@
 MyBudgetManagerAPI/appsettings.Development.json
+MyBudgetManagerAPI.Tests/coverage-report/
+coverage-report/
+MyBudgetManagerAPI/bin/Debug/net8.0/appsettings.Development.json
+MyBudgetManagerAPI.Tests/TestResults/
+MyBudgetManagerAPI.Tests/bin/Debug/net8.0/appsettings.Development.json

@@ -333,3 +333,7 @@ C:\Users\MYC\source\repos\MyBudgetManagerAPI\MyBudgetManagerAPI.Tests\bin\Debug\
 C:\Users\MYC\source\repos\MyBudgetManagerAPI\MyBudgetManagerAPI.Tests\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 C:\Users\MYC\source\repos\MyBudgetManagerAPI\MyBudgetManagerAPI.Tests\bin\Debug\net8.0\MyBudgetManagerAPI.dll
 C:\Users\MYC\source\repos\MyBudgetManagerAPI\MyBudgetManagerAPI.Tests\bin\Debug\net8.0\MyBudgetManagerAPI.pdb
+C:\Users\MYC\source\repos\MyBudgetManagerAPI\MyBudgetManagerAPI.Tests\bin\Debug\net8.0\FakeItEasy.dll
+C:\Users\MYC\source\repos\MyBudgetManagerAPI\MyBudgetManagerAPI.Tests\bin\Debug\net8.0\MockQueryable.Core.dll
+C:\Users\MYC\source\repos\MyBudgetManagerAPI\MyBudgetManagerAPI.Tests\bin\Debug\net8.0\MockQueryable.EntityFrameworkCore.dll
+C:\Users\MYC\source\repos\MyBudgetManagerAPI\MyBudgetManagerAPI.Tests\bin\Debug\net8.0\MockQueryable.FakeItEasy.dll

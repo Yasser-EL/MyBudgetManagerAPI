@@ -30,7 +30,7 @@ public class CDepenseRepository
     {
         decimal? l_rTotal = await m_oContext.p_oDepenses
                             .Where(item => item.p_nIdType == a_nIdTypeDepense
-                                        && item.p_nMois == a_nMois
+                                        && (!a_nMois.HasValue || item.p_nMois == a_nMois)
                                         && item.p_nAnnee == a_nAnnee
                                         && (!a_nIdPersonne.HasValue || item.p_nIdPersonne == a_nIdPersonne)
                                         && (!a_nSemaine.HasValue || item.p_nSemaine == a_nSemaine))
@@ -38,18 +38,22 @@ public class CDepenseRepository
         return (l_rTotal ?? 0);
     }
 
-    public async Task UpdateDepense(CDepense a_oDepense)
+    public async Task<bool> bUpdateDepense(CDepense a_oDepense)
     {
-        m_oContext.Entry(a_oDepense).State = EntityState.Modified;
+        bool lbOk = true;
 
         try
         {
+            m_oContext.Entry(a_oDepense).State = EntityState.Modified;
             await m_oContext.SaveChangesAsync();
         }
-        catch (DbUpdateConcurrencyException)
+        catch (DbUpdateConcurrencyException ex)
         {
-            throw;
+            lbOk = false;
+            Console.WriteLine(ex.ToString());
         }
+
+        return lbOk;
     }
 
     public bool bDepenseExiste(int a_nId)
@@ -63,8 +67,15 @@ public class CDepenseRepository
 
         try
         {
-            m_oContext.p_oDepenses.Add(a_oDepense);
-            await m_oContext.SaveChangesAsync();
+            if (a_oDepense != null)
+            {
+                m_oContext.p_oDepenses.Add(a_oDepense);
+                await m_oContext.SaveChangesAsync();
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
         }
         catch (Exception ex)
         {
@@ -84,11 +95,11 @@ public class CDepenseRepository
             if (l_oDepense != null)
             {
                 m_oContext.p_oDepenses.Remove(l_oDepense);
-                await m_oContext.SaveChangesAsync();
+                await m_oContext.SaveChangesAsync(CancellationToken.None);
             }
             else
             {
-                throw new Exception();
+                throw new NullReferenceException();
             }
         }
         catch (Exception ex)

@@ -126,7 +126,10 @@ public class CDepenseService
             }
             else
             {
-                await m_oDepenseRepository.UpdateDepense(a_oDepense);
+                if (!(await m_oDepenseRepository.bUpdateDepense(a_oDepense)))
+                {
+                    l_nState = -2;
+                }
             }
         }
         catch (Exception ex)

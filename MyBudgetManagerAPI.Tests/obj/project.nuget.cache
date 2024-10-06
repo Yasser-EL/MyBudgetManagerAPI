@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "plaFB9vsghg=",
+  "dgSpecHash": "2Y+8NArqeWs=",
   "success": true,
   "projectFilePath": "C:\\Users\\MYC\\source\\repos\\MyBudgetManagerAPI\\MyBudgetManagerAPI.Tests\\MyBudgetManagerAPI.Tests.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\MYC\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\MYC\\.nuget\\packages\\coverlet.collector\\6.0.2\\coverlet.collector.6.0.2.nupkg.sha512",
     "C:\\Users\\MYC\\.nuget\\packages\\coverlet.msbuild\\6.0.2\\coverlet.msbuild.6.0.2.nupkg.sha512",
+    "C:\\Users\\MYC\\.nuget\\packages\\fakeiteasy\\5.1.1\\fakeiteasy.5.1.1.nupkg.sha512",
     "C:\\Users\\MYC\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\MYC\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\MYC\\.nuget\\packages\\humanizer.core.af\\2.14.1\\humanizer.core.af.2.14.1.nupkg.sha512",
@@ -133,6 +134,9 @@
     "C:\\Users\\MYC\\.nuget\\packages\\microsoft.visualstudio.web.codegenerators.mvc\\8.0.5\\microsoft.visualstudio.web.codegenerators.mvc.8.0.5.nupkg.sha512",
     "C:\\Users\\MYC\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\MYC\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
+    "C:\\Users\\MYC\\.nuget\\packages\\mockqueryable.core\\7.0.3\\mockqueryable.core.7.0.3.nupkg.sha512",
+    "C:\\Users\\MYC\\.nuget\\packages\\mockqueryable.entityframeworkcore\\7.0.3\\mockqueryable.entityframeworkcore.7.0.3.nupkg.sha512",
+    "C:\\Users\\MYC\\.nuget\\packages\\mockqueryable.fakeiteasy\\7.0.3\\mockqueryable.fakeiteasy.7.0.3.nupkg.sha512",
     "C:\\Users\\MYC\\.nuget\\packages\\mono.texttemplating\\2.3.1\\mono.texttemplating.2.3.1.nupkg.sha512",
     "C:\\Users\\MYC\\.nuget\\packages\\moq\\4.20.72\\moq.4.20.72.nupkg.sha512",
     "C:\\Users\\MYC\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",

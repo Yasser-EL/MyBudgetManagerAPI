@@ -4,14 +4,52 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Generate coverage stats",
-            "command": "reportgenerator",
-            "type": "shell",
+            "label": "Run Tests with Coverage",
+            "type": "process",
+            "command": "dotnet",
             "args": [
-                "-reports:${workspaceFolder}/MyBudgetManagerAPI.Tests/lcov.info",
-                "-targetdir:${workspaceFolder}/MyBudgetManagerAPI.Tests/covstats"
+                "test",
+                "--collect:XPlat Code Coverage"
             ],
-            "problemMatcher": []
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "detail": "Runs the tests with code coverage collection.",
+            "options": {
+                "cwd": "${workspaceFolder}/MyBudgetManagerAPI.Tests" // Update this path
+            }
+        },
+        {
+            "label": "Generate Coverage Stats",
+            "type": "shell",
+            "command": "reportgenerator",
+            "args": [
+                "-reports:${workspaceFolder}/MyBudgetManagerAPI.Tests/TestResults/**/coverage.cobertura.xml",
+                "-targetdir:${workspaceFolder}/MyBudgetManagerAPI.Tests/coverage-report",
+                "-reporttypes:Html"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "Generates coverage report after running tests."
+        },
+        {
+            "label": "Run Tests and Generate Coverage Report",
+            "dependsOn": [
+                "Run Tests with Coverage",
+                "Generate Coverage Stats"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "detail": "Runs tests and generates coverage report."
         }
     ]
 }
