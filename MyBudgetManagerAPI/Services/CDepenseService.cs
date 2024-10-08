@@ -7,8 +7,12 @@ namespace MyBudgetManagerAPI.Services;
 public class CDepenseService
 {
 
-    private const string MSG_ERRUR_MOIS_INVALIDE = "Valeur invalide du mois";
-    private const string MSG_ERRUR_SEMAINE_INVALIDE = "Valeur invalide de la semaine";
+    public const string MSG_ERRUR_MOIS_INVALIDE = "Valeur invalide du mois";
+    public const string MSG_ERRUR_SEMAINE_INVALIDE = "Valeur invalide de la semaine";
+    public const string MSG_ERRUR_ANNEE_INVALIDE = "Valeur invalide de l'année";
+    public const string MSG_ERRUR_ID_TYPE_DEPENSE_INVALIDE = "Id invalide du type de dépense";
+    public const string MSG_ERRUR_ID_PERSONNE_INVALIDE = "Id invalide de la personne";
+
 
     private readonly CDepenseRepository m_oDepenseRepository;
 
@@ -17,7 +21,13 @@ public class CDepenseService
         m_oDepenseRepository = new CDepenseRepository(a_oContext);
     }
 
-    public async Task<List<CDepense>> aoGetDepenses(int a_nMois, int a_nAnnee, int? a_nSemaine)
+    //constructor for mock repository
+    public CDepenseService(CDepenseRepository a_oDepenseRepository)
+    {
+        m_oDepenseRepository = a_oDepenseRepository;
+    }
+
+    public virtual async Task<List<CDepense>> aoGetDepenses(int a_nMois, int a_nAnnee, int? a_nSemaine)
     {
         List<CDepense> l_aoDepenses;
         //validation de l'input
@@ -31,7 +41,7 @@ public class CDepenseService
 
         if (!(a_nAnnee >= 2020 && a_nAnnee <= 2100))
         {
-            throw new ArgumentException("Valeur invalide de l'année");
+            throw new ArgumentException(MSG_ERRUR_ANNEE_INVALIDE);
         }
 
         //-> validation de la semaine (input facultatif)
@@ -51,7 +61,7 @@ public class CDepenseService
         return l_aoDepenses;
     }
 
-    public async Task<decimal> dGetTotalDepenses(int a_nIdTypeDepense, int? a_nIdPersonne, int? a_nSemaine, int? a_nMois)
+    public virtual async Task<decimal> dGetTotalDepenses(int a_nIdTypeDepense, int? a_nIdPersonne, int? a_nSemaine, int? a_nMois)
     {
         int l_nMois;
         int l_nAnnee;
@@ -76,7 +86,7 @@ public class CDepenseService
         //-> validation du type de dépense
         if (!(a_nIdTypeDepense > 0))
         {
-            throw new ArgumentException("Id invalide du type de dépense");
+            throw new ArgumentException(MSG_ERRUR_ID_TYPE_DEPENSE_INVALIDE);
         }
 
         //validation de l'id personne
@@ -86,7 +96,7 @@ public class CDepenseService
             //validation de l'id de la personne
             if (!(a_nIdPersonne > 0))
             {
-                throw new ArgumentException("Id invalide de la personne");
+                throw new ArgumentException(MSG_ERRUR_ID_PERSONNE_INVALIDE);
             }
         }
 
@@ -105,7 +115,7 @@ public class CDepenseService
         return await m_oDepenseRepository.dGetTotalDepenses(a_nIdTypeDepense, a_nIdPersonne, a_nSemaine, l_nMois, l_nAnnee);
     }
 
-    public async Task<int> nUpdateDepense(int a_nId, CDepense a_oDepense)
+    public virtual async Task<int> nUpdateDepense(int a_nId, CDepense a_oDepense)
     {
         //state 1 = everything is ok
         //state 0 : depense not found
@@ -139,12 +149,12 @@ public class CDepenseService
 
         return l_nState;
     }
-    public async Task<bool> bAddDepense(CDepense a_oDepense)
+    public virtual async Task<bool> bAddDepense(CDepense a_oDepense)
     {
         return await m_oDepenseRepository.bAddDepense(a_oDepense);
     }
 
-    public async Task<bool> bDeleteDepense(int a_nId)
+    public virtual async Task<bool> bDeleteDepense(int a_nId)
     {
         return await m_oDepenseRepository.bDeleteDepense(a_nId);
     }

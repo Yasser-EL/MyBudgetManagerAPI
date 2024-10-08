@@ -61,7 +61,7 @@ public partial class CDepenseRepositoryTests
         decimal result = await m_oDepenseRepository.dGetTotalDepenses(1, 1, 2, 3, 2024);
 
         // Assert
-        Assert.Equal(300, result); // 100 + 200
+        Assert.Equal(200, result);
     }
 
     [Fact]

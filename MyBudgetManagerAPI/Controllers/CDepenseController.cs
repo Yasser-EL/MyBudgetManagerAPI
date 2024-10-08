@@ -20,13 +20,29 @@ namespace MyBudgetManagerAPI.Controllers
             m_oDepenseService = new CDepenseService(a_oContext);
         }
 
+        //constructeur pour testing avec les mocks
+        public CDepenseController(CDepenseService a_oDepenseService)
+        {
+            m_oDepenseService = a_oDepenseService;
+        }
+
         //GET: api/depenses/12/2024/4
         [Authorize]
         [HttpGet("{nMois}/{nAnnee}")]
         public async Task<ActionResult<IEnumerable<CDepense>>> GetDepenses(int nMois, int nAnnee,
                                                                     [FromQuery(Name = "semaine")] int? nSemaine)
         {
-            return await m_oDepenseService.aoGetDepenses(nMois, nAnnee, nSemaine);
+            List<CDepense> l_aoDepenses = new List<CDepense>();
+            try
+            {
+                l_aoDepenses = await m_oDepenseService.aoGetDepenses(nMois, nAnnee, nSemaine);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+
+            return Ok(l_aoDepenses);
         }
 
         //GET: api/depenses/total/12/2024/4
@@ -36,7 +52,16 @@ namespace MyBudgetManagerAPI.Controllers
                                                                     [FromQuery(Name = "semaine")] int? nSemaine,
                                                                     [FromQuery(Name = "mois")] int? nMois)
         {
-            decimal l_rTotal = await m_oDepenseService.dGetTotalDepenses(nIdTypeDepense, nIdPersonne, nSemaine, nMois);
+            decimal l_rTotal;
+
+            try
+            {
+                l_rTotal = await m_oDepenseService.dGetTotalDepenses(nIdTypeDepense, nIdPersonne, nSemaine, nMois);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.ToString());
+            }
 
             return Ok(new { total = l_rTotal });
         }

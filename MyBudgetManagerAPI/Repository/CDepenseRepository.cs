@@ -13,7 +13,7 @@ public class CDepenseRepository
         m_oContext = a_oContext;
     }
 
-    public async Task<List<CDepense>> aoGetDepenses(int a_nMois, int a_nAnnee, int? a_nSemaine)
+    public virtual async Task<List<CDepense>> aoGetDepenses(int a_nMois, int a_nAnnee, int? a_nSemaine)
     {
         List<CDepense> l_aoDepenses = new List<CDepense>();
 
@@ -26,7 +26,7 @@ public class CDepenseRepository
         return l_aoDepenses;
     }
 
-    public async Task<decimal> dGetTotalDepenses(int a_nIdTypeDepense, int? a_nIdPersonne, int? a_nSemaine, int? a_nMois, int a_nAnnee)
+    public virtual async Task<decimal> dGetTotalDepenses(int a_nIdTypeDepense, int? a_nIdPersonne, int? a_nSemaine, int? a_nMois, int a_nAnnee)
     {
         decimal? l_rTotal = await m_oContext.p_oDepenses
                             .Where(item => item.p_nIdType == a_nIdTypeDepense
@@ -38,7 +38,7 @@ public class CDepenseRepository
         return (l_rTotal ?? 0);
     }
 
-    public async Task<bool> bUpdateDepense(CDepense a_oDepense)
+    public virtual async Task<bool> bUpdateDepense(CDepense a_oDepense)
     {
         bool lbOk = true;
 
@@ -56,7 +56,7 @@ public class CDepenseRepository
         return lbOk;
     }
 
-    public bool bDepenseExiste(int a_nId)
+    public virtual bool bDepenseExiste(int a_nId)
     {
         return m_oContext.p_oDepenses.Any(e => e.p_nIdDepense == a_nId);
     }
