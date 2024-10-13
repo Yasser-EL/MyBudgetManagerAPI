@@ -86,6 +86,10 @@
               "target": "Package",
               "version": "[8.0.5, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
@@ -93,10 +97,6 @@
             "Swashbuckle.AspNetCore.SwaggerUI": {
               "target": "Package",
               "version": "[6.7.3, )"
-            },
-            "System.Text.Json": {
-              "target": "Package",
-              "version": "[8.0.4, )"
             }
           },
           "imports": [
